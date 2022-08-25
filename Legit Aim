@@ -1,4 +1,4 @@
-local Aiming = loadstring(game:HttpGet("https://raw.githubusercontent.com/howyougetcracked/speed/main/silent"))()
+local Aiming = loadstring(game:HttpGet("https://raw.githubusercontent.com/ShxrkWare/-script/main/AimMoudule"))()
 Aiming.TeamCheck(false)
 
 local Workspace = game:GetService("Workspace")
