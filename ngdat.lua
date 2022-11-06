@@ -2413,7 +2413,7 @@ else
 	_G.Dis = true
 end
 
-local Library = Update:Window("Ngdat","",Enum.KeyCode.RightControl);
+local Library = Update:Window("Ndat","",Enum.KeyCode.RightControl);
 main = Library:Tab("Home",7072717697)
 Main = Library:Tab("AutoFarm",7072706351)
 iain = Library:Tab("Auto",7072706318)
