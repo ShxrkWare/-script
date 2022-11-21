@@ -269,14 +269,20 @@ switch1.set(false)
 switch1.event:Connect(function(bool)
     slientaim = bool
 end)
+
 local slider1 = tab1.new("slider", {
-  text = "Hit Percent"
-  color = Color3.new (0.8, 0.5, 0)
-  min = 1,
-  max = 100,
-  value = 600.1,
-  rounding = 1,
+    text = "Hit Percent",
+    color = Color3.new(0.8, 0.5, 0),
+    min = 1,
+    max = 100,
+    value = 600.1,
+    rounding = 1,
 })
+slider1.event:Connect(function(x)
+    _G.HitPercent = x
+end)
+slider1.set(420.69)
+
 
 local switch1 = tab1.new("_G.Spread", {
     text = "No Spread";
@@ -285,7 +291,7 @@ switch1.set(false)
 switch1.event:Connect(function(bool)
     for i,v in pairs(getgc(true)) do
         if typeof(v) == 'table' and rawget(v,'maxSpread') then
-            if val then
+            if bool then
                 v.maxSpread = 0
             else
                 v.maxSpread = 0.35
@@ -294,23 +300,19 @@ switch1.event:Connect(function(bool)
     end
 end)
 
-slider1.event:Connect(function(x))
-  _G.Percent = x
-end)
-slider1.set
-
 local slider1 = tab1.new("slider", {
-  text = "Hit Distance"
-  color = Color3.new (0.8, 0.5, 0)
-  min = 5,
-  max = 15,
-  value = 600.1,
-  rounding = 1,
+    text = "Hit Distance",
+    color = Color3.new(0.8, 0.5, 0),
+    min = 5,
+    max = 15,
+    value = 600.1,
+    rounding = 1,
 })
-slider1.event:Connect(function(x))
-  _G.HitDistance= x
+slider1.event:Connect(function(x)
+    _G.HitDistance = x
 end)
 slider1.set(15)
+
 
 local switch1 = tab1.new("_G.NoGravity", {
     text = "No Gravity";
@@ -349,7 +351,6 @@ local switch1 = tab1.new("_G.ShootAfterCharge", {
 })
 switch1.set(false)
 switch1.event:Connect(function(bool)
-    function(bool)
     for i,v in pairs(getgc(true)) do
         if typeof(v) == 'table' and rawget(v,'maxSpread') then
             v.startShootingAfterCharge = bool
