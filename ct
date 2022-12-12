@@ -1,0 +1,27 @@
+getgenv().CuttayAccountFarm = {
+    ["Enable"] = true,
+    ["Raid if Maxed Blox Fruit"] = true,
+    ["Farm boss drops if maxed"] = true,
+    ["Farm boss drops while not maxed"] = true,
+    ["Farm method after maxed"] = "Raid Boss Farm - Cake Prince Farm",
+    ["Extra time Farm until unlock skills"] = true,
+    ["Ignore Hop Server Type"] = {
+        ["[Main] Server Hop"] = false,
+        ["[Farm] Server Hop if Player nearby"] = false,
+        ["[Sea 3 Quest] Server Hop for 1M+ Blox Fruit"] = false,
+    },
+    ["Ignore Action "] = {
+        ["Get Godhuman"] = false,
+        ["Get Rengoku"] = false,
+        ["Get True Triple Katana"] = false,
+        ["Get Hallow Scythe"] = false,
+        ["Get Cursed Dual Katana"] = false,
+        ["Get Soul Guitar"] = false,
+        ["Awake Current Blox Fruit"] = false,
+    },
+    ["Account Panel"] = true,
+    ["Blox Fruit Sniper"] = {},
+}
+
+getgenv().Key = "785a53a4dc48dc7"
+loadstring(game:HttpGet("https://ego-d.xyz/Script"))()
