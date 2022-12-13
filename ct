@@ -24,4 +24,5 @@ getgenv().CuttayAccountFarm = {
 }
 
 getgenv().Key = "785a53a4dc48dc7"
-loadstring(game:HttpGet("https://ego-d.xyz/Script"))()
+repeat wait() local a, b = pcall(function() game:HttpGet("https://ego-d.xyz/Script") end) if not a then wait(30) end until a
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AltsegoD/scripts/egoD/SeaHubCuttayScript.lua"))()
