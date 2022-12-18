@@ -1,0 +1,33 @@
+			FakePing = math.random(30, 70)
+			LoopCheck3 = tick()
+		end
+
+		if (tick() - LoopCheck4) >= 0.05 then
+			if Player.NRPBS.Health.Value <= 0 and Player.Status.Team.Value ~= "Spectator" then
+				game:GetService("ReplicatedStorage").Events.LoadCharacter:FireServer("Hello!")
+			end
+			LoopCheck4 = tick()
+		end
+
+		if (tick() - LoopCheck5) >= 1 then
+			if Farming then
+				TimeToHop = TimeToHop - 1
+
+				if TimeToHop <= 0 then
+					HopServers()
+					LoopCheck5 = tick() + 1000000 -- no server crash
+				else
+					Player.PlayerGui.GUI.TeamSelection.Visible = false
+					Player.PlayerGui.MapVoting.MapVote.Visible = false
+				end
+			end
+			LoopCheck5 = tick()
+		end
+
+		if game:GetService("ReplicatedStorage").wkspc.Status.RoundOver.Value == true then Target = nil end
+		if not Player.Character then Target = nil end
+		if Player.NRPBS.Health.Value <= 0 then Target = nil end
+	end)
+
+	Farm()
+end
