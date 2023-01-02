@@ -62,7 +62,7 @@ local function getClosestPlayerToCursor(fov)
 	return closestPlayer
 end
 
-shared.fov = 150
+shared.fov = 200
 
 local function run()
 
