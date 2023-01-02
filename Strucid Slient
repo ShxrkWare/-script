@@ -1,20 +1,3 @@
--- bypass anti
-local Numbers = {5, 6, 9, 23, 18, 19, 11, 23, 17, 20, 21, 39} -- All the possible anticheat remotes
-local OldNamecall
-OldNamecall = hookmetamethod(game, "__namecall", function(self, ...)
-       local args = {...}
-       local method = getnamecallmethod()
-
-       if tostring(self) == "RemoteEvent" and getnamecallmethod() == "FireServer" then
-           if args[1] == 1 and args[2] == Numbers[table.find(Numbers,args[2])] then
-                   return
-           end
-       end
-
-return OldNamecall(self, ...)
-end)
-print('Bypassed Anti Cheat')
-
 local run_service = game:GetService('RunService')
 local players = game:GetService('Players')
 local Teams = game:GetService('Teams')
@@ -32,16 +15,16 @@ end
 
 local function get_character(player) return indexExists(player, 'Character') end
 
-local function get_mouse_location() return user_input_service:GetMouseLocation() end
+local function get_mouse_location() return Vector2.new(workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2) end
 
 local function is_alive(player) return player.Character and player.Character.Parent and player.Character:FindFirstChild('Humanoid') and player.Character.Humanoid.Health > 0 end
 
 local function getClosestPlayerToCursor(fov)
 
-	local maxDistance = shared.fov
+	local maxDistance = fov or math.huge
 
 	local closestPlayer = nil
-	local closestPlayerDistance = nil
+	local closestPlayerDistance = math.huge
 
 	for _, player in pairs(players:GetPlayers()) do
 
@@ -50,7 +33,7 @@ local function getClosestPlayerToCursor(fov)
 
 			if not on_screen then continue end
 
-			local distance = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(ScreenPoint.X, ScreenPoint.Y)).Magnitude
+			local distance = (get_mouse_location() - Vector2.new(pos.X, pos.Y)).magnitude
 
 			if distance <= maxDistance and distance < closestPlayerDistance then
 				closestPlayer = player
@@ -63,6 +46,7 @@ local function getClosestPlayerToCursor(fov)
 end
 
 shared.fov = 100
+
 local circle = Drawing.new('Circle')
 circle.Thickness = 0
 circle.NumSides = 12
@@ -70,13 +54,9 @@ circle.Radius = shared.fov
 circle.Filled = false
 circle.Transparency = 1
 circle.Color = Color3.new(1, 0, 0.384313)
-circle.Visible = true
-circle.Position = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
-local target = nil
-RunService.Heartbeat:Connect(function(deltaTime)
-    task.wait(deltaTime ^ 2)
-    target = getClosestPlayerToCursor(shared.fov)
-end)
+circle.Visible = false
+circle.Position = get_mouse_location()
+
 local function run()
 
 	local gunModule = require(localplayer.PlayerGui:WaitForChild('MainGui').NewLocal.Tools.Tool.Gun);
