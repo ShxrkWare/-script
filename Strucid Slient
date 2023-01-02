@@ -63,7 +63,20 @@ local function getClosestPlayerToCursor(fov)
 end
 
 shared.fov = 300
-
+local circle = Drawing.new('Circle')
+circle.Thickness = 2
+circle.NumSides = 12
+circle.Radius = shared.fov or 400
+circle.Filled = false
+circle.Transparency = 1
+circle.Color = Color3.new(1, 0, 0.384313)
+circle.Visible = true
+local target = nil
+RunService.Heartbeat:Connect(function(deltaTime)
+    task.wait(deltaTime ^ 2)
+    target = getClosestPlayerToCursor(shared.fov)
+    circle.Position = get_mouse_location()
+end)
 local function run()
 
 	local gunModule = require(localplayer.PlayerGui:WaitForChild('MainGui').NewLocal.Tools.Tool.Gun);
