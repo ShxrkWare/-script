@@ -38,10 +38,10 @@ local function is_alive(player) return player.Character and player.Character.Par
 
 local function getClosestPlayerToCursor(fov)
 
-	local maxDistance = fov or math.huge
+	local maxDistance = fov or 500
 
 	local closestPlayer = nil
-	local closestPlayerDistance = math.huge
+	local closestPlayerDistance = nil
 
 	for _, player in pairs(players:GetPlayers()) do
 
@@ -62,7 +62,7 @@ local function getClosestPlayerToCursor(fov)
 	return closestPlayer
 end
 
-shared.fov = 200
+shared.fov = 300
 
 local function run()
 
