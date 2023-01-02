@@ -1,0 +1,84 @@
+-- bypass anti
+local Numbers = {5, 6, 9, 23, 18, 19, 11, 23, 17, 20, 21, 39} -- All the possible anticheat remotes
+local OldNamecall
+OldNamecall = hookmetamethod(game, "__namecall", function(self, ...)
+       local args = {...}
+       local method = getnamecallmethod()
+
+       if tostring(self) == "RemoteEvent" and getnamecallmethod() == "FireServer" then
+           if args[1] == 1 and args[2] == Numbers[table.find(Numbers,args[2])] then
+                   return
+           end
+       end
+
+return OldNamecall(self, ...)
+end)
+print('Bypassed Anti Cheat')
+local run_service = game:GetService('RunService')
+local players = game:GetService('Players')
+local Teams = game:GetService('Teams')
+local user_input_service = game:GetService('UserInputService')
+local workspace = game:GetService('Workspace')
+
+local camera = workspace.CurrentCamera
+local wtvp = camera.WorldToViewportPoint
+local localplayer = players.LocalPlayer
+
+local function indexExists(object, index)
+	local _, value = pcall(function() return object[index] end)
+	return value
+end
+
+local function get_character(player) return indexExists(player, 'Character') end
+
+local function get_mouse_location() return user_input_service:GetMouseLocation() end
+
+local function is_alive(player) return player.Character and player.Character.Parent and player.Character:FindFirstChild('Humanoid') and player.Character.Humanoid.Health > 0 end
+
+local function getClosestPlayerToCursor(fov)
+
+	local maxDistance = fov or math.huge
+
+	local closestPlayer = nil
+	local closestPlayerDistance = math.huge
+
+	for _, player in pairs(players:GetPlayers()) do
+
+		if player ~= localplayer and get_character(player) and is_alive(player) then
+			local pos, on_screen = wtvp(camera, get_character(player).Head.Position)
+
+			if not on_screen then continue end
+
+			local distance = (get_mouse_location() - Vector2.new(pos.X, pos.Y)).magnitude
+
+			if distance <= maxDistance and distance < closestPlayerDistance then
+				closestPlayer = player
+				closestPlayerDistance = distance
+			end
+		end
+	end
+
+	return closestPlayer
+end
+
+shared.fov = 250
+
+local function run()
+
+	local gunModule = require(localplayer.PlayerGui:WaitForChild('MainGui').NewLocal.Tools.Tool.Gun);
+	local oldFunc = gunModule.ConeOfFire;
+
+	gunModule.ConeOfFire = function(...)
+		if (getfenv(2).script.Name == 'Extra') then
+			local closePlayer = getClosestPlayerToCursor(shared.fov);
+
+			if (closePlayer and closePlayer.Character) then return closePlayer.Character.Head.CFrame.Position end
+		end
+
+		return oldFunc(...);
+	end;
+end
+
+run();
+
+localplayer.CharacterAdded:Connect(run);
