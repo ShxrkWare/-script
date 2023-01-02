@@ -38,7 +38,7 @@ local function is_alive(player) return player.Character and player.Character.Par
 
 local function getClosestPlayerToCursor(fov)
 
-	local maxDistance = fov or 500
+	local maxDistance = shared.fov
 
 	local closestPlayer = nil
 	local closestPlayerDistance = nil
@@ -50,7 +50,7 @@ local function getClosestPlayerToCursor(fov)
 
 			if not on_screen then continue end
 
-			local distance = (get_mouse_location() - Vector2.new(pos.X, pos.Y)).magnitude
+			local distance = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(ScreenPoint.X, ScreenPoint.Y)).Magnitude
 
 			if distance <= maxDistance and distance < closestPlayerDistance then
 				closestPlayer = player
@@ -62,7 +62,7 @@ local function getClosestPlayerToCursor(fov)
 	return closestPlayer
 end
 
-shared.fov = 300
+shared.fov = 100
 local circle = Drawing.new('Circle')
 circle.Thickness = 0
 circle.NumSides = 12
