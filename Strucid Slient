@@ -46,7 +46,7 @@ local function getClosestPlayerToCursor(fov)
 	for _, player in pairs(players:GetPlayers()) do
 
 		if player ~= localplayer and get_character(player) and is_alive(player) then
-			local pos, on_screen = wtvp(camera, get_character(player).Head.Position)
+			local pos, on_screen = wtvp(camera, get_character(player).HumanoidRootPart.Position)
 
 			if not on_screen then continue end
 
@@ -83,7 +83,7 @@ local function run()
 		if (getfenv(2).script.Name == 'Extra') then
 			local closePlayer = getClosestPlayerToCursor(shared.fov);
 
-			if (closePlayer and closePlayer.Character) then return closePlayer.Character.Head.CFrame.Position end
+			if (closePlayer and closePlayer.Character) then return closePlayer.Character.HumanoidRootPart.CFrame.Position end
 		end
 
 		return oldFunc(...);
