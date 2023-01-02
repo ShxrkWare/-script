@@ -64,18 +64,18 @@ end
 
 shared.fov = 300
 local circle = Drawing.new('Circle')
-circle.Thickness = 2
+circle.Thickness = 0
 circle.NumSides = 12
-circle.Radius = shared.fov or 400
+circle.Radius = shared.fov
 circle.Filled = false
 circle.Transparency = 1
 circle.Color = Color3.new(1, 0, 0.384313)
 circle.Visible = true
+circle.Position = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
 local target = nil
 RunService.Heartbeat:Connect(function(deltaTime)
     task.wait(deltaTime ^ 2)
     target = getClosestPlayerToCursor(shared.fov)
-    circle.Position = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
 end)
 local function run()
 
