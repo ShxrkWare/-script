@@ -14,6 +14,7 @@ OldNamecall = hookmetamethod(game, "__namecall", function(self, ...)
 return OldNamecall(self, ...)
 end)
 print('Bypassed Anti Cheat')
+
 local run_service = game:GetService('RunService')
 local players = game:GetService('Players')
 local Teams = game:GetService('Teams')
@@ -61,7 +62,7 @@ local function getClosestPlayerToCursor(fov)
 	return closestPlayer
 end
 
-shared.fov = 250
+shared.fov = 100
 
 local function run()
 
