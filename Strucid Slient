@@ -75,7 +75,7 @@ local target = nil
 RunService.Heartbeat:Connect(function(deltaTime)
     task.wait(deltaTime ^ 2)
     target = getClosestPlayerToCursor(shared.fov)
-    circle.Position = get_mouse_location()
+    circle.Position = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
 end)
 local function run()
 
