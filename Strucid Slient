@@ -62,7 +62,7 @@ local function getClosestPlayerToCursor(fov)
 	return closestPlayer
 end
 
-shared.fov = 100
+shared.fov = 50
 
 local circle = Drawing.new('Circle')
 circle.Thickness = 0
