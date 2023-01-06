@@ -86,38 +86,9 @@ function thisCode()
         end
     end)
 
-    local AllowRunService = true
-    local AllowRunServiceBind = Instance.new("BindableFunction")
-    function AllowRunServiceBind.OnInvoke(args)
-        if args == "Enable" then
-            AllowRunService = true
-        elseif args == "Disable" then
-            AllowRunService = false
-        end
-        local CoreGui = game:GetService("StarterGui")
-        CoreGui:SetCore("SendNotification", {
-            Title = "ChestFarm",
-            Text = "Enable/Disable ChestFarm",
-            Duration = math.huge,
-            Callback = AllowRunServiceBind,
-            Button1 = "Enable",
-            Button2 = "Disable",
-        })
-    end
-
-    local CoreGui = game:GetService("StarterGui")
-    CoreGui:SetCore("SendNotification", {
-        Title = "ChestFarm",
-        Text = "Disable/Enable ChestFarm",
-        Duration = math.huge,
-        Callback = AllowRunServiceBind,
-        Button1 = "Enable",
-        Button2 = "Disable",
-    })
-    
     task.spawn(function()
         while true do
-            if AllowRunService == true then
+            if getgenv().datdz == true then
                 local hasChar = game.Players.LocalPlayer:FindFirstChild("Character")
                 if not game.Players.LocalPlayer.Character then
         
