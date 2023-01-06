@@ -1,33 +1,20 @@
-local AllowRunService = true
-    local AllowRunServiceBind = Instance.new("BindableFunction")
-    function AllowRunServiceBind.OnInvoke(args)
-        if args == "Copy Link" then
-            AllowRunService = true
-        elseif args == "Khong Follow" then
-            AllowRunService = false
-        end
-        local CoreGui = game:GetService("StarterGui")
-        CoreGui:SetCore("SendNotification", {
-            Title = "Follow Tiktok Tui Nha",
-            Text = "@ntd240205",
-            Duration = math.huge,
-            Callback = AllowRunServiceBind,
-            Button1 = "Enable",
-            Button2 = "Disable",
-        })
+function Callback(answer)
+    if answer == "CopyLink" then
+        setclipboard("https://www.tiktok.com/@ntd240205")
+    elseif answer == "ew no" then
+        print("ew")
     end
-
-    local CoreGui = game:GetService("StarterGui")
-    CoreGui:SetCore("SendNotification", {
-        Title = "ChestFarm",
-        Text = "Disable/Enable ChestFarm",
-        Duration = math.huge,
-        Callback = AllowRunServiceBind,
-        Button1 = "Copy Link Tiktok",
-        Button2 = "Khong Follow",
-while wait() do
-   if AllowRunService == true then
-    setclipboard(https://www.tiktok.com/@ntd240205)
-elseif AllowRunService == false then
-    getgenv().run = false
 end
+
+local Bindable = Instance.new("BindableFunction")
+Bindable.OnInvoke = Callback
+
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Theo dõi kênh mình để upd script!";
+    Text = "@ntd240205";
+    Duration = "300";
+    Button1 = "CopyLink";
+    Button2 = "Xoá";
+    Icon = "rbxassetid://7635712200";
+    Callback = Bindable
+})
