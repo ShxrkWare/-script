@@ -88,7 +88,7 @@ function thisCode()
 
     task.spawn(function()
         while true do
-            if getgenv().datdz == true then
+            if getgenv().run == true then
                 local hasChar = game.Players.LocalPlayer:FindFirstChild("Character")
                 if not game.Players.LocalPlayer.Character then
         
