@@ -1,15 +1,15 @@
 local AllowRunService = true
     local AllowRunServiceBind = Instance.new("BindableFunction")
     function AllowRunServiceBind.OnInvoke(args)
-        if args == "Enable" then
+        if args == "Copy Link" then
             AllowRunService = true
-        elseif args == "Disable" then
+        elseif args == "Khong Follow" then
             AllowRunService = false
         end
         local CoreGui = game:GetService("StarterGui")
         CoreGui:SetCore("SendNotification", {
-            Title = "ChestFarm",
-            Text = "Enable/Disable ChestFarm",
+            Title = "Follow Tiktok Tui Nha",
+            Text = "@ntd240205",
             Duration = math.huge,
             Callback = AllowRunServiceBind,
             Button1 = "Enable",
@@ -23,5 +23,11 @@ local AllowRunService = true
         Text = "Disable/Enable ChestFarm",
         Duration = math.huge,
         Callback = AllowRunServiceBind,
-        Button1 = "Enable",
-        Button2 = "Disable",
+        Button1 = "Copy Link Tiktok",
+        Button2 = "Khong Follow",
+while wait() do
+   if AllowRunService == true then
+    setclipboard(https://www.tiktok.com/@ntd240205)
+elseif AllowRunService == false then
+    getgenv().run = false
+end
