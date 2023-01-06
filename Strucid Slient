@@ -62,7 +62,7 @@ local function getClosestPlayerToCursor(fov)
 	return closestPlayer
 end
 
-shared.fov = 35
+shared.fov = 50
 
 local circle = Drawing.new('Circle')
 circle.Thickness = 0
@@ -71,7 +71,7 @@ circle.Radius = shared.fov
 circle.Filled = false
 circle.Transparency = 1
 circle.Color = Color3.new(1, 0, 0.384313)
-circle.Visible = true
+circle.Visible = false
 circle.Position = get_mouse_location()
 
 local function run()
