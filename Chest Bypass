@@ -12,7 +12,7 @@ Bindable.OnInvoke = Callback
 game.StarterGui:SetCore("SendNotification", {
     Title = "Theo dõi kênh mình để upd script!";
     Text = "@ntd240205";
-    Duration = "300";
+    Duration = "2500";
     Button1 = "CopyLink";
     Button2 = "Khong";
     Icon = "rbxassetid://7635712200";
