@@ -2,7 +2,7 @@ function Callback(answer)
     if answer == "CopyLink" then
         setclipboard("https://www.tiktok.com/@ntd240205")
     elseif answer == "Khong" then
-        Game.playerd.localplayer:kick(Không Follow Tiktok @ntd240205 À 😭)
+        Game.playerd.localplayer:kick(Không Follow Tiktok @ntd240205 À)
     end
 end
 
