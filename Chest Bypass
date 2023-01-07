@@ -2,7 +2,7 @@ function Callback(answer)
     if answer == "CopyLink" then
         setclipboard("https://www.tiktok.com/@ntd240205")
     elseif answer == "Khong" then
-        Game.Players.LocalPlayer:Kick("Không Follow Tiktok @ntd240205 À")
+        Game.Players.LocalPlayer:Kick("Sao Khong Follow Tiktok @ntd240205?")
     end
 end
 
