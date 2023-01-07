@@ -16,7 +16,7 @@ local Tracer_Color = Color3.fromRGB(0, 255, 50)
 local Tracer_Thickness = 1
 local Tracer_Transparency = 1 -- 1 Visible, 0 Not Visible
 
-local Autothickness = false -- Makes screen less encumbered
+local Autothickness = true -- Makes screen less encumbered
 
 local Team_Check = true
 local red = Color3.fromRGB(227, 52, 52)
@@ -64,7 +64,7 @@ for i, v in pairs(game.Players:GetChildren()) do
                 local pos, vis = camera:WorldToViewportPoint(v.Character.HumanoidRootPart.Position)
                 if vis then
                     local Scale = v.Character.Head.Size.Y/2
-                    local Size = Vector3.new(2, 3, 1.5) * (Scale * 2) -- Change this for different box size
+                    local Size = Vector3.new(1, 2, 1.5) * (Scale * 1) -- Change this for different box size
 
                     local Top1 = camera:WorldToViewportPoint((v.Character.HumanoidRootPart.CFrame * CFrame.new(-Size.X, Size.Y, -Size.Z)).p)
                     local Top2 = camera:WorldToViewportPoint((v.Character.HumanoidRootPart.CFrame * CFrame.new(-Size.X, Size.Y, Size.Z)).p)
