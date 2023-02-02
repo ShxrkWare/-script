@@ -1,0 +1,6 @@
+_G.loop = true
+   while _G.loop do
+game:GetService("ReplicatedStorage").Systems.Score.Begin:FireServer()
+wait(.1)
+game:GetService("ReplicatedStorage").Systems.Score.Redeem:FireServer(math.huge)
+end
